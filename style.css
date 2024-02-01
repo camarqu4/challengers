@@ -1,0 +1,143 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif; /* Or any sans-serif font to mimic Twitter's clean look */
+    background-color: #0d1413;
+}
+
+.split-screen {
+    display: flex;
+    height: 100vh;
+}
+
+.left-pane {
+    flex: 1;
+    background-size: cover;
+    color: #F7f7f7; /* Assuming a darker image for contrast */
+}
+
+.logo-container img {
+    max-width: 80%; /* Limits the image width to 50% of its container's width */
+    max-height: 100vh; /* Limits the image height to 50% of the viewport height */
+    height: auto; /* Ensures the height scales in proportion to the width */
+    display: block; /* Display block to remove bottom space/margin of the image */
+    margin: 0 auto; /* Centers the image horizontally within its container */
+}
+
+.logo-container {
+    padding: 50px; /* Adjust as needed */
+}
+
+.right-pane {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.promo-text {
+    text-align: center; /* Center the text horizontally */
+    margin-bottom: 20px; /* Provide some space between the promo text and the buttons */
+}
+
+.promo-text h1 {
+    font-style: italic; /* Italicize the heading */
+    margin-bottom: 10px; /* Small gap between the heading and the subheading */
+    color: white;
+}
+
+.promo-text p {
+    font-weight: bold; /* Bold the subheading */
+    font-size: x-large;
+    color: white;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%; /* Ensure it spans the full width of its parent container */
+    color: #fff; /* Text color for 'or' */
+    margin: 20px 0; /* Add some vertical space around the divider */
+}
+
+.divider .line {
+    flex-grow: 1; /* Allow the lines to grow and fill the space */
+    border: none;
+    height: 1px;
+    background-color: #fff; /* Line color */
+    margin: 0 10px; /* Space between the lines and the 'or' text */
+}
+
+.divider .or {
+    white-space: nowrap; /* Prevent 'or' from wrapping */
+    padding: 0 10px; /* Space around 'or' for better separation */
+}
+
+.action-buttons button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: 1px solid transparent; /* Adjust or remove based on your design */
+    border-radius: 20px; /* Rounded buttons similar to Twitter */
+    font-size: 16px;
+    background-color: #F7f7f7; /* color: white */
+    color: black;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items horizontally in the container */
+    width: 25%; /* Ensure it spans the full width of its parent container */
+    gap: 5px; /* Adjust the space between elements as necessary */
+}
+
+.action-buttons button:hover {
+    background-color: #0caf2d;
+}
+
+.form-container {
+    color: white;
+    text-align: center;
+}
+
+.form {
+    display: none; /* Initially hidden */
+}
+
+input[type="email"], input[type="password"], input[type="text"] {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 80%;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 20px;
+    border: none;
+    width: 84%; /* Aligns with input field width */
+    background-color: #0caf2d; /* Choose a visually appealing color */
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #3cea61; /* color: white */
+    color: black;
+}
+
+#backArrow {
+    padding: 10px;
+    font-size: 20px;
+    color: #1DA1F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}

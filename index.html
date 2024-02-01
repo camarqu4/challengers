@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="split-screen">
+        <div class="left-pane">
+            <div class="logo-container">
+                <img src="ch_logo.png" alt="Your Logo">
+            </div>
+        </div>
+        <div class="right-pane">
+            <div class="promo-text">
+                <h1>Unlock Insights, Ignite Engagement</h1>
+                <p>Join today.</p>
+            </div>
+            <div class="action-buttons">
+                <button id="loginButton">Log In</button>
+                <div class="divider">
+                    <hr class="line">
+                    <span class="or">or</span>
+                    <hr class="line">
+                </div>
+                <button id="createAccountButton">Create Account</button>
+                <<div id="backArrow" style="display: none; cursor: pointer;">
+                    &#8592; Back
+                </div>
+            </div>
+            <div class="form-container">
+                <div id="loginForm" class="form" style="display: none;">
+                    <h2>Login</h2>
+                    <form>
+                        <input type="email" placeholder="Email" required>
+                        <input type="password" placeholder="Password" required>
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+                <div id="createAccountForm" class="form" style="display: none;">
+                    <h2>Create Account</h2>
+                    <form>
+                        <input type="text" placeholder="Username" required>
+                        <input type="email" placeholder="Email" required>
+                        <input type="password" placeholder="Password" required>
+                        <button type="submit">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
