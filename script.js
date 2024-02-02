@@ -25,3 +25,13 @@ document.getElementById('backArrow').addEventListener('click', function () {
     // Hide the back arrow
     document.getElementById('backArrow').style.display = 'none';
 });
+
+function redirectToDetailsPage(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Here you could add any logic to process the data
+    // For example, storing the data in localStorage or sending it to a server
+
+    // Redirect to the create_account_details.html page
+    window.location.href = 'create_account_details.php';
+}

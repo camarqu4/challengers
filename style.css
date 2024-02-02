@@ -1,3 +1,4 @@
+/* index.html styling */
 body, html {
     margin: 0;
     padding: 0;
@@ -135,9 +136,63 @@ button[type="submit"]:hover {
 #backArrow {
     padding: 10px;
     font-size: 20px;
-    color: #1DA1F2;
+    color: #3cea61;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.full-screen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* create_account_details.html styling */
+.details-form input[type="text"] {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 80%;
+}
+
+.details-form .submit-details {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 20px;
+    border: none;
+    width: 84%;
+    background-color: #0caf2d;
+    color: white;
+}
+
+.details-form .submit-details:hover {
+    background-color: #3cea61;
+    color: black;
+}
+
+
+/* confirmation or failure messages styling */
+.success-class {
+    color: green;
+    background-color: #ebf9eb;
+    border: 1px solid #b6e6b6;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.error-class {
+    color: red;
+    background-color: #f9ebeb;
+    border: 1px solid #e6b6b6;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-align: center;
 }
