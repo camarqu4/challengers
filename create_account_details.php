@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Additional Details</title>
-    <link rel="stylesheet" href="style.css"> <!-- Ensure the path to style.css is correct -->
+    <link rel="stylesheet" href="style.css"> <!--  path to style.css  -->
 </head>
 <body>
 <div class="full-screen-container">
     <div class="form-container" style="margin-top: 50px;">
         <h2>Additional Details</h2>
         <form action="submit_details.php" method="POST" class="details-form">
-            <input type="hidden" name="username" required> <!-- Adjust if you're handling username in a different way -->
-            <input type="hidden" name="email" required> <!-- Adjust if you're handling email in a different way -->
-            <input type="hidden" name="password" required> <!-- Adjust if you're handling password in a different way -->
+            <input type="hidden" name="username" required> <!-- Adjust if you're handling username in different way -->
+            <input type="hidden" name="email" required> <!-- Adjust if you're handling email in  different way -->
+            <input type="hidden" name="password" required> <!-- Adjust if you're handling password in  different way -->
             <input type="text" id="firstName" name="firstName" placeholder="First Name" required><br>
             <input type="text" id="lastName" name="lastName" placeholder="Last Name" required><br>
             <input type="text" id="companyName" name="companyName" placeholder="Company Name" required><br>

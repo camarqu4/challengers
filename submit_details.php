@@ -7,17 +7,17 @@ $dbName = 'spring2024team1';
 $user = 'spring2024team1';
 $pass = 'spring2024team1';
 
-// Create connection
+// Create new connection
 $conn = new mysqli($host, $user, $pass, $dbName);
 
-// Check connection
+// Check new connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 if ($stmt->execute()) {
     $_SESSION['message'] = "Account created successfully!";
-    $_SESSION['message_type'] = "success"; // Use this to style the message (e.g., green for success)
+    $_SESSION['message_type'] = "success"; //  to style the message (e.g., green for success)
 } else {
     $_SESSION['message'] = "Error: " . $stmt->error;
     $_SESSION['message_type'] = "error"; // Use this to style the message (e.g., red for error)
