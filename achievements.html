@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Achievements</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo-container-nav">
+            <img src="ch_logo.png" alt="Your Logo">
+        </div>
+        <a href="user_home.html">Home</a>
+        <a href="surveys.html">Surveys</a> <!-- Update href as necessary -->
+        <a href="leaderboard.html">Leaderboard</a> <!-- Update href as necessary -->
+        <a href="achievements.html">Achievements</a>
+        <a href="profile.html">Profile</a> <!-- Update href as necessary -->
+    </div>
+    <div class="achievements-container">
+        <h1>Achievements</h1>
+
+        <section class="unlocked-achievements">
+            <h2>Unlocked Achievements</h2>
+            <ul class="achievements-list">
+                <!-- Initially empty, dynamically filled as achievements are unlocked -->
+            </ul>
+        </section>
+
+        <section class="locked-achievements">
+            <h2>Locked Achievements</h2>
+            <ul class="achievements-list">
+                <li class="achievement">
+                    <img src="achvmnt_apprentice.png" alt="Achievement Icon" class="achievement-icon">
+                    <div class="achievement-info">
+                        <h3>Apprentice</h3>
+                        <p>Complete 1 Survey</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%;"></div> <!-- Adjust width based on progress -->
+                        </div>
+                    </div>
+                </li>
+                <!-- Repeat for each locked achievement -->
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

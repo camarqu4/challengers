@@ -26,12 +26,27 @@ document.getElementById('backArrow').addEventListener('click', function () {
     document.getElementById('backArrow').style.display = 'none';
 });
 
-function redirectToDetailsPage(event) {
+function redirectToHomePage(event) {
     event.preventDefault(); // Prevent the default form submission
 
-    // Here you could add any logic to process the data
-    // For example, storing the data in localStorage or sending it to a server
+    //will add add logic to process the data
 
     // Redirect to the create_account_details.html page
-    window.location.href = 'create_account_details.php';
+    window.location.href = 'user_home.html';
+}
+
+// Assuming you have a login form with an ID 'loginForm'
+document.querySelector('#loginForm form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    //will add  logic to validate the user's credentials
+
+    // Redirect to the user home page
+    window.location.href = 'user_home.html';
+});
+
+// Example function to unlock an achievement
+function unlockAchievement(achievementId) {
+    // Logic to remove the achievement from the locked list
+    // and add it to the unlocked list
 }

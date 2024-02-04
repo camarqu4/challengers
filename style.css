@@ -151,30 +151,58 @@ button[type="submit"]:hover {
     flex-direction: column;
 }
 
-/* create_account_details.html styling */
-.details-form input[type="text"] {
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    width: 80%;
-}
-
-.details-form .submit-details {
-    padding: 10px 20px;
-    margin-top: 10px;
-    border-radius: 20px;
-    border: none;
-    width: 84%;
-    background-color: #0caf2d;
+/* User home styling  */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #0d1413;
+    padding: 5px 100px; /* Adjust based on your design */
     color: white;
+    align-items: center;
 }
 
-.details-form .submit-details:hover {
-    background-color: #3cea61;
-    color: black;
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
 }
 
+.logo-container-nav img {
+    max-width: 75px; /* Adjust based on your logo size */
+    height: auto;
+}
+
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: calc(100vh - 60px); /* Adjust based on the navbar height */
+}
+
+.achievements-pane, .surveys-pane, .leaderboard-pane {
+    flex: 1;
+    margin: 0 10px;
+    padding: 20px;
+    background-color: #1e2a28;
+    border-radius: 10px;
+    color: #F7f7f7;
+    display: flex;
+    flex-direction: column;
+}
+
+.achievements-pane h2, .surveys-pane h2, .leaderboard-pane h2 {
+    margin-bottom: 20px;
+}
+
+/* Adjust the following as necessary to match your design */
+.achievements-pane, .leaderboard-pane {
+    max-width: 20%;
+}
+
+.surveys-pane {
+    flex-grow: 2;
+}
 
 /* confirmation or failure messages styling */
 .success-class {
@@ -195,4 +223,56 @@ button[type="submit"]:hover {
     margin-top: 20px;
     border-radius: 5px;
     text-align: center;
+}
+
+/* acheivements styling  */
+achievements-container {
+    padding: 20px;
+    color: #fff;
+    background-color: #0d1413; /* Matching the theme from earlier */
+}
+
+.achievements-list {
+    list-style-type: none; /* Removes the default list bullet points */
+    padding: 0;
+}
+
+.achievement {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    margin-bottom: 20px; /* Space between achievements */
+    background-color: #1e2a28; /* Slight contrast against container */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.achievement-icon {
+    width: 50px; /* Fixed size for icons */
+    margin-right: 20px; /* Space between icon and text */
+}
+
+.achievement-info h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    background-color: #ddd; /* Light grey background */
+    border-radius: 20px; /* Rounded corners for the bar */
+    overflow: hidden; /* Ensures inner bar stays within the border radius */
+}
+
+.progress {
+    height: 20px; /* Fixed height for progress bar */
+    background-color: #0caf2d; /* Green progress color */
+    border-radius: 20px; /* Keep consistent with the container */
+    width: 0%; /* Start with no progress; dynamically update this with JS or server-side rendering */
+}
+
+.unlocked-achievements, .locked-achievements {
+    margin-bottom: 30px;
+}
+
+.unlocked-achievements h2, .locked-achievements h2 {
+    color: #F7f7f7; /* Light color for headers */
 }
