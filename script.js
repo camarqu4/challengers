@@ -50,3 +50,63 @@ function unlockAchievement(achievementId) {
     // Logic to remove the achievement from the locked list
     // and add it to the unlocked list
 }
+
+// Database Connection 
+// TODO: Alter connection to link to our current database
+/* var MySql = {
+    _internalCallback : function() { console.log("Callback not set")},
+    Execute: async function (Host, Username, Password, Database, Sql, Callback) {
+        MySql._internalCallback = Callback;
+        var strSrc = "https://mysql.cloud.wpcarey.asu.edu/api/babyNames/raw/";
+        strSrc += "?sql=" + Sql;
+        strSrc += "&Callback=MySql._internalCallback";
+        console.log("Connecting to mysql.cloud.wpcarey.asu.edu..."); 
+	console.log("strSrc: ", strSrc)
+        
+        // querying the db
+        try {
+            let resp = await fetch(strSrc);
+            if (!resp.ok) {
+                throw new Error("HTTP error, status code = " + resp.status + '. ' + resp.Error);
+            }
+            let json = await resp.json();
+            console.log(`Query successful: ${json.Success}`);
+            console.log(`Query result: ${JSON.stringify(json.Result)}`);
+            if (!json.Success) {
+                console.log(`Error: ${json.Error}`)
+            } 
+            MySql._internalCallback(json);
+        } catch (error) {
+            alert(error);
+        }
+    }
+}; */
+
+/* Query String format. use as a base when creating a search
+function updateQueryString() {
+    queryString = 
+
+      "SELECT name, number, state, sex, year \n" 
+    + "FROM   NamesNumberByStateYear \n"
+    + "WHERE\n "
+    + " state = "    + "'" + state   + "'"
+    + " AND sex = "  + "'" + sex     + "'"
+    + " AND year = " + "'" + year    + "'\n"
+    + "ORDER BY number DESC LIMIT 5;"
+    document.getElementById('queryStingId').innerHTML = queryString;
+    } */
+    
+/* Run query format, updated to use our login name and password
+    function runQuery() {
+        MySql.Execute(
+            "107.180.1.16",	// mySQL server
+            "spring2024team1", 				// login name
+            "spring2024team1", 			// login password
+            "spring2024team1", 			// database to use
+                                    // SQL query string:
+            queryString,
+            function (data) {
+                processQueryResult(data);
+            }
+        );
+    } */
