@@ -57,7 +57,7 @@ function unlockAchievement(achievementId) {
     _internalCallback : function() { console.log("Callback not set")},
     Execute: async function (Host, Username, Password, Database, Sql, Callback) {
         MySql._internalCallback = Callback;
-        var strSrc = "https://mysql.cloud.wpcarey.asu.edu/api/babyNames/raw/";
+        var strSrc = "https://mysql.cloud.wpcarey.asu.edu/api/babyNames/raw/";  CHANGE THIS URL
         strSrc += "?sql=" + Sql;
         strSrc += "&Callback=MySql._internalCallback";
         console.log("Connecting to mysql.cloud.wpcarey.asu.edu..."); 
@@ -95,7 +95,7 @@ function updateQueryString() {
     + "ORDER BY number DESC LIMIT 5;"
     document.getElementById('queryStingId').innerHTML = queryString;
     } */
-    
+
 /* Run query format, updated to use our login name and password
     function runQuery() {
         MySql.Execute(
