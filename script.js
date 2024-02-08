@@ -1,3 +1,8 @@
+"use strict";
+//variable declarations
+let queryString = ""
+let activeUserId = ""
+
 document.getElementById('loginButton').addEventListener('click', function () {
     // Show  login form
     document.getElementById('loginForm').style.display = 'block';
@@ -109,4 +114,46 @@ function updateQueryString() {
                 processQueryResult(data);
             }
         );
+    } 
+    function processQueryResult(queryReturned) {
+        if (!queryReturned.Success) {
+            alert(queryReturned.Error)
+        } else {
+            console.log(queryReturned.Result)
+            document.getElementById("output").innerHTML = 
+                JSON.stringify(queryReturned.Result, null, 2);
+        }
     } */
+
+//query for single user point balance
+//ActiveUserID will be the logged in User
+function updateUserPoints() {
+    //updating the query string
+    queryString = 
+
+      "SELECT points \n" 
+    + "FROM   ActiveUsers \n"
+    + "WHERE\n "
+    + " EmpID = "    + "'" + activeUserId   + "'"
+    // running the query
+    MySql.Execute(
+        "107.180.1.16",	// mySQL server
+        "spring2024team1", 				// login name
+        "spring2024team1", 			// login password
+        "spring2024team1", 			// database to use
+                                // SQL query string:
+        queryString,
+        function (queryReturned) {
+            if (!queryReturned.Success) {
+                alert(queryReturned.Error)
+            } else {
+                console.log(queryReturned.Result)
+                // this element should be the point tally on the User's Profile
+                document.getElementById("currentPointsId").innerHTML = 
+                    JSON.stringify(queryReturned.Result, null, 2);
+            }
+        }
+    );
+
+
+    }
