@@ -12,25 +12,41 @@
         <div class="logo-container-nav col-lg-02 col-md-02 col-sm-12">
             <img src="ch_logo.png" alt="Your Logo">
         </div>
-        <a href="user_home.html" div class="col-lg-02 col-md-01 col-sm-12">Home</a>
-        <a href="surveys.html" div class="col-lg-02 col-md-03 col-sm-00">Surveys</a> <!-- Update href as necessary -->
-        <a href="leaderboard.html" div class="col-lg-02 col-md-03 col-sm-00">Leaderboard</a> <!-- Update href as necessary -->
-        <a href="achievements.html"div class="col-lg-02 col-md-00 col-sm-00">Achievements</a>
-        <a href="profile.html"div class="col-lg-02 col-md-03 col-sm-12">Profile</a> <!-- Update href as necessary -->
+        <a href="user_home.html" class="col-lg-02 col-md-01 col-sm-12">Home</a>
+        <a href="surveys.html" class="col-lg-02 col-md-03 col-sm-00">Surveys</a>
+        <a href="leaderboard.html" class="col-lg-02 col-md-03 col-sm-00">Leaderboard</a>
+        <a href="achievements.html" class="col-lg-02 col-md-00 col-sm-00">Achievements</a>
+        <a href="profile.html" class="col-lg-02 col-md-03 col-sm-12">Profile</a>
+        <!-- Logout Button -->
+        <button id="logoutButton" class="logout-btn col-lg-02 col-md-03 col-sm-12">Logout</button>
     </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Are you sure you want to logout?</p>
+            <button id="confirmLogout">Yes, Logout</button>
+            <button id="cancelLogout">Cancel</button>
+        </div>
+    </div>
+
     <div class="dashboard-container">
-        <div class="achievements-pane col-lg-03 col-md-04 col-sm-00">
+        <div class="achievements-pane">
             <h2>Achievements Earned</h2>
             <!-- Content will go here -->
         </div>
-        <div class="surveys-pane col-lg-06 col-md-04 col-sm-00">
+        <div class="surveys-pane">
             <h2>Available Surveys</h2>
             <!-- Content will go here -->
         </div>
-        <div class="leaderboard-pane col-lg-03 col-md-04 col-sm-00">
+        <div class="leaderboard-pane">
             <h2>Leaderboard</h2>
             <!-- Content will go here -->
         </div>
     </div>
+
+    <!-- Include JavaScript for interactivity -->
+    <script src="script.js"></script>
 </body>
 </html>
