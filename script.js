@@ -45,47 +45,16 @@ document.querySelector('#loginForm form').addEventListener('submit', function (e
     window.location.href = 'user_home.html';
 });
 
-// Get elements
-document.addEventListener('DOMContentLoaded', (event) => {
-var logoutModal = document.getElementById("logoutModal");
-var logoutBtn = document.getElementById("logoutButton");
-var span = document.getElementsByClassName("close")[0];
-var confirmLogoutBtn = document.getElementById("confirmLogout");
-var cancelLogoutBtn = document.getElementById("cancelLogout");
-
-// When the user clicks the logout button, show the modal
-logoutBtn.onclick = function() {
-    logoutModal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    logoutModal.style.display = "none";
-}
-
-// When the user clicks "Yes, Logout", log them out
-confirmLogoutBtn.onclick = function() {
-    console.log("Logging out...");
-    // Add your logout logic here
-    // This might include clearing session storage, cookies, or other logout procedures
-}
-
-// When the user clicks "Cancel", close the modal
-cancelLogoutBtn.onclick = function() {
-    logoutModal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == logoutModal) {
-        logoutModal.style.display = "none";
-    }
-}
-});
 
 
+// admin navigate to view user request page
 document.getElementById('toRequestsPage').addEventListener('click', function() {
     window.location.href = 'requests.html';
+});
+
+// admin navigate to point balance page
+document.getElementById('view-users').addEventListener('click', () => {
+    window.location.href = 'point_balance.html';
 });
 
 
