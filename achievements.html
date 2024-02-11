@@ -23,27 +23,55 @@
 
         <section class="unlocked-achievements">
             <h2>Unlocked Achievements</h2>
-            <ul class="achievements-list">
+            <ul class="achievements-list" id="unlocked-achievements-list">
                 <!-- Initially empty, dynamically filled as achievements are unlocked -->
             </ul>
         </section>
 
         <section class="locked-achievements">
             <h2>Locked Achievements</h2>
-            <ul class="achievements-list">
-                <li class="achievement">
-                    <img src="achvmnt_apprentice.png" alt="Achievement Icon" class="achievement-icon">
-                    <div class="achievement-info">
-                        <h3>Apprentice</h3>
-                        <p>Complete 1 Survey</p>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 0%;"></div> <!-- Adjust width based on progress -->
-                        </div>
-                    </div>
-                </li>
-                <!-- Repeat for each locked achievement -->
+            <ul class="achievements-list" id="locked-achievements-list">
+                <!-- Initially empty, dynamically filled with locked achievements from the server -->
             </ul>
         </section>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('/achievements')
+                .then(response => response.json())
+                .then(data => {
+                    const unlockedList = document.querySelector('#unlocked-achievements-list');
+                    const lockedList = document.querySelector('#locked-achievements-list');
+
+                    data.forEach(achievement => {
+                        // Assuming you have a way to determine if an achievement is locked or unlocked
+                        const list = isAchievementUnlocked(achievement) ? unlockedList : lockedList;
+                        const item = document.createElement('li');
+                        item.className = 'achievement';
+                        item.innerHTML = `
+                        <img src="${achievement.logo_img}" alt="Achievement Icon" class="achievement-icon">
+                        <div class="achievement-info">
+                            <h3>${achievement.name}</h3>
+                            <p>${achievement.description}</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%;"> <!-- Update this based on actual progress --></div>
+                            </div>
+                        </div>
+                    `;
+                        list.appendChild(item);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching achievements:', error);
+                });
+        });
+
+        function isAchievementUnlocked(achievement) {
+            // You will need to implement this based on your application's logic
+            // For example, checking if the user's actions meet the achievement's requirement
+            return false; // Placeholder
+        }
+    </script>
 </body>
 </html>

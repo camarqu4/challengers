@@ -1,14 +1,14 @@
 document.getElementById('loginButton').addEventListener('click', function () {
-    // Show  login form
+    // Show login form
     document.getElementById('loginForm').style.display = 'block';
     // Hide all initial action buttons and the divider
     document.querySelectorAll('.action-buttons button, .divider').forEach(element => element.style.display = 'none');
-    // Show  back arrow
+    // Show back arrow
     document.getElementById('backArrow').style.display = 'flex';
 });
 
 document.getElementById('createAccountButton').addEventListener('click', function () {
-    // Show  create account form
+    // Show create account form
     document.getElementById('createAccountForm').style.display = 'block';
     // Hide all initial action buttons and the divider
     document.querySelectorAll('.action-buttons button, .divider').forEach(element => element.style.display = 'none');
@@ -26,23 +26,57 @@ document.getElementById('backArrow').addEventListener('click', function () {
     document.getElementById('backArrow').style.display = 'none';
 });
 
-function redirectToHomePage(event) {
-    event.preventDefault(); // Prevent the default form submission
+// Handle create account form submission
+function redirectToHomePage() {
+    const form = document.getElementById('createAccountForm').querySelector('form');
+    const formData = new FormData(form);
+    const jsonData = {};
+    formData.forEach((value, key) => {
+        jsonData[key] = value;
+    });
 
-    //will add add logic to process the data
-
-    // Redirect to the create_account_details.html page
-    window.location.href = 'user_home.html';
+    fetch('/createAccount', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jsonData),
+    })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+            window.location.href = 'user_home.html';
+        })
+        .catch(error => console.error('Error:', error));
 }
 
-// Assuming you have a login form with an ID 'loginForm'
+// Handle login form submission
 document.querySelector('#loginForm form').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the default form submission
 
-    //will add  logic to validate the user's credentials
+    const formData = new FormData(this);
+    const jsonData = {};
+    formData.forEach((value, key) => {
+        jsonData[key] = value;
+    });
 
-    // Redirect to the user home page
-    window.location.href = 'user_home.html';
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jsonData),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                console.log(data.message);
+                window.location.href = 'user_home.html';
+            } else {
+                alert(data.message); // Simple user feedback. Consider improving this for better UX
+            }
+        })
+        .catch(error => console.error('Error:', error));
 });
 
 // Example function to unlock an achievement
