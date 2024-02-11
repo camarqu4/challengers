@@ -326,3 +326,122 @@ achievements-container {
     .col-lg-11 	{width: 		 91.66%; }
     .col-lg-12 	{width: 		100.00%; }
 }
+
+
+/* Accounts Request page */
+body {
+    font-family: Arial, sans-serif;
+}
+
+button {
+    margin: 10px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.flagged {
+    color: red;
+}
+
+#requestsList {
+    margin-bottom: 20px;
+}
+
+/* admin home screen*/
+.button {
+    display: inline-block;
+    background-color: transparent; /* Set background to transparent */
+    color: white; /* Adjust text color as needed */
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none; 
+    border-radius: 5px; /* Rounded edges, adjust as needed */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #808080; /* Color on hover for visibility */
+    color: #333; /* Text color on hover */
+}
+
+
+/* accounts request */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    color: white;
+    background-color: black;
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: white; 
+}
+
+p {
+    color: white;
+}
+
+/* styling for point balance page*/
+.link-button {
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none; 
+    border-radius: 5px; /* Rounded edges, adjust as needed */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.link-button:hover {
+    background-color: #808080; /* Color on hover for visibility */
+    color: #333; /* Text color on hover */
+}
+
+/*styling logo on adminhomescreen*/
+header {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.logo {
+    height: 125px; /* Adjust based on your logo's size */
+    margin-right: 20px; /* Adds some space between the logo and the title */
+}
+
+/* styling point_balance page*/
+body {
+    font-family: Arial, sans-serif;
+}
+
+#userList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#userList li {
+    margin-bottom: 10px;
+}
+
+button {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+input, select {
+    margin: 10px 5px;
+    padding: 5px;
+}

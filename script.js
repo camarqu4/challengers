@@ -61,6 +61,19 @@ document.querySelector('#loginForm form').addEventListener('submit', function (e
     window.location.href = 'user_home.html';
 });
 
+
+
+// admin navigate to view user request page
+document.getElementById('toRequestsPage').addEventListener('click', function() {
+    window.location.href = 'requests.html';
+});
+
+// admin navigate to point balance page
+document.getElementById('view-users').addEventListener('click', () => {
+    window.location.href = 'point_balance.html';
+});
+
+
 // Example function to unlock an achievement
 function unlockAchievement(achievementId) {
     // Logic to remove the achievement from the locked list

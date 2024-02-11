@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Points</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="back-button">Back to Main Page</button>
+    <header>
+        <img src="ch_logo.png" alt="Company Logo" class="logo">
+    </header>    
+    <h1>Users' Points</h1>
+    <div>
+        <input type="text" id="filterInput" placeholder="Filter...">
+        <select id="sortSelect">
+            <option value="firstName">First Name</option>
+            <option value="lastName">Last Name</option>
+            <option value="empID">Employee ID</option>
+            <option value="department">Department</option>
+            <option value="points">Points</option>
+        </select>
+        <button onclick="applyFilter()">Filter/Sort</button>
+    </div>
+    <ul id="userList">
+        <!-- User items will be populated here using JavaScript -->
+    </ul>
+    <script src="users.js"></script>
+</body>
+</html>
