@@ -58,11 +58,11 @@ function unlockAchievement(achievementId) {
 
 // Database Connection 
 // TODO: Alter connection to link to our current database
-/* var MySql = {
+var MySql = {
     _internalCallback : function() { console.log("Callback not set")},
     Execute: async function (Host, Username, Password, Database, Sql, Callback) {
         MySql._internalCallback = Callback;
-        var strSrc = "https://mysql.cloud.wpcarey.asu.edu/api/babyNames/raw/";  CHANGE THIS URL
+        var strSrc = "https://mysql.cloud.wpcarey.asu.edu/api/babyNames/raw/";  //CHANGE THIS URL
         strSrc += "?sql=" + Sql;
         strSrc += "&Callback=MySql._internalCallback";
         console.log("Connecting to mysql.cloud.wpcarey.asu.edu..."); 
@@ -85,7 +85,7 @@ function unlockAchievement(achievementId) {
             alert(error);
         }
     }
-}; */
+};
 
 /* Query String format. use as a base when creating a search
 function updateQueryString() {
