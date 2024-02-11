@@ -1,8 +1,3 @@
-"use strict";
-//variable declarations
-let queryString = ""
-let activeUserId = ""
-
 document.getElementById('loginButton').addEventListener('click', function () {
     // Show login form
     document.getElementById('loginForm').style.display = 'block';
@@ -31,7 +26,7 @@ document.getElementById('backArrow').addEventListener('click', function () {
     document.getElementById('backArrow').style.display = 'none';
 });
 
-// Handle create account form submission
+// Updated function to handle create account form submission
 function redirectToHomePage() {
     const form = document.getElementById('createAccountForm').querySelector('form');
     const formData = new FormData(form);
@@ -50,38 +45,20 @@ function redirectToHomePage() {
         .then(response => response.text())
         .then(data => {
             console.log(data);
+            // Redirect to the user home page
             window.location.href = 'user_home.html';
         })
         .catch(error => console.error('Error:', error));
 }
 
-// Handle login form submission
+// Assuming you have a login form with an ID 'loginForm'
 document.querySelector('#loginForm form').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the default form submission
 
-    const formData = new FormData(this);
-    const jsonData = {};
-    formData.forEach((value, key) => {
-        jsonData[key] = value;
-    });
+    // Add logic to validate the user's credentials here
 
-    fetch('/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(jsonData),
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                console.log(data.message);
-                window.location.href = 'user_home.html';
-            } else {
-                alert(data.message); // Simple user feedback. Consider improving this for better UX
-            }
-        })
-        .catch(error => console.error('Error:', error));
+    // Redirect to the user home page after login validation
+    window.location.href = 'user_home.html';
 });
 
 // Example function to unlock an achievement
@@ -89,105 +66,3 @@ function unlockAchievement(achievementId) {
     // Logic to remove the achievement from the locked list
     // and add it to the unlocked list
 }
-
-// Database Connection 
-// TODO: Alter connection to link to our current database
-var MySql = {
-    _internalCallback : function() { console.log("Callback not set")},
-    Execute: async function (Host, Username, Password, Database, Sql, Callback) {
-        MySql._internalCallback = Callback;
-        var strSrc = "https://mysql.cloud.wpcarey.asu.edu/api/babyNames/raw/";  //CHANGE THIS URL
-        strSrc += "?sql=" + Sql;
-        strSrc += "&Callback=MySql._internalCallback";
-        console.log("Connecting to mysql.cloud.wpcarey.asu.edu..."); 
-	console.log("strSrc: ", strSrc)
-        
-        // querying the db
-        try {
-            let resp = await fetch(strSrc);
-            if (!resp.ok) {
-                throw new Error("HTTP error, status code = " + resp.status + '. ' + resp.Error);
-            }
-            let json = await resp.json();
-            console.log(`Query successful: ${json.Success}`);
-            console.log(`Query result: ${JSON.stringify(json.Result)}`);
-            if (!json.Success) {
-                console.log(`Error: ${json.Error}`)
-            } 
-            MySql._internalCallback(json);
-        } catch (error) {
-            alert(error);
-        }
-    }
-};
-
-/* Query String format. use as a base when creating a search
-function updateQueryString() {
-    queryString = 
-
-      "SELECT name, number, state, sex, year \n" 
-    + "FROM   NamesNumberByStateYear \n"
-    + "WHERE\n "
-    + " state = "    + "'" + state   + "'"
-    + " AND sex = "  + "'" + sex     + "'"
-    + " AND year = " + "'" + year    + "'\n"
-    + "ORDER BY number DESC LIMIT 5;"
-    document.getElementById('queryStingId').innerHTML = queryString;
-    } */
-
-/* Run query format, updated to use our login name and password
-    function runQuery() {
-        MySql.Execute(
-            "107.180.1.16",	// mySQL server
-            "spring2024team1", 				// login name
-            "spring2024team1", 			// login password
-            "spring2024team1", 			// database to use
-                                    // SQL query string:
-            queryString,
-            function (data) {
-                processQueryResult(data);
-            }
-        );
-    } 
-    function processQueryResult(queryReturned) {
-        if (!queryReturned.Success) {
-            alert(queryReturned.Error)
-        } else {
-            console.log(queryReturned.Result)
-            document.getElementById("output").innerHTML = 
-                JSON.stringify(queryReturned.Result, null, 2);
-        }
-    } */
-
-//query for single user point balance
-//ActiveUserID will be the logged in User
-function updateUserPoints() {
-    //updating the query string
-    queryString = 
-
-      "SELECT points \n" 
-    + "FROM   ActiveUsers \n"
-    + "WHERE\n "
-    + " EmpID = "    + "'" + activeUserId   + "'"
-    // running the query
-    MySql.Execute(
-        "107.180.1.16",	// mySQL server
-        "spring2024team1", 				// login name
-        "spring2024team1", 			// login password
-        "spring2024team1", 			// database to use
-                                // SQL query string:
-        queryString,
-        function (queryReturned) {
-            if (!queryReturned.Success) {
-                alert(queryReturned.Error)
-            } else {
-                console.log(queryReturned.Result)
-                // this element should be the point tally on the User's Profile
-                document.getElementById("currentPointsId").innerHTML = 
-                    JSON.stringify(queryReturned.Result, null, 2);
-            }
-        }
-    );
-
-
-    }
