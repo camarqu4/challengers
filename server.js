@@ -19,11 +19,11 @@ const dbConfig = {
 let db;
 
 function handleDisconnect() {
-    db = mysql.createConnection(dbConfig);
+    db = mysql.createConnection(dbConfig); // Create a connection to the database
     db.connect(err => {
         if (err) {
             console.log('Error when connecting to db:', err);
-            setTimeout(handleDisconnect, 2000);
+            setTimeout(handleDisconnect, 2000); // Try to reconnect every 2 seconds if connection fails
         } else {
             console.log('Connected to the MySQL server.');
         }
@@ -41,8 +41,10 @@ function handleDisconnect() {
 
 handleDisconnect();
 
+// Updated /createAccount endpoint to handle new user fields
 app.post('/createAccount', (req, res) => {
     let { username, firstName, lastName, email, department, positionTitle, password } = req.body;
+    // Before storing the password, consider implementing hashing here for security
     let user = { username, firstName, lastName, email, department, positionTitle, password };
 
     let sql = 'INSERT INTO users SET ?';
@@ -57,27 +59,11 @@ app.post('/createAccount', (req, res) => {
     });
 });
 
-app.post('/login', (req, res) => {
-    const { email, password } = req.body;
-    let sql = 'SELECT * FROM users WHERE email = ? AND password = ? LIMIT 1';
-    db.query(sql, [email, password], (err, results) => {
-        if (err) {
-            console.error('Failed to retrieve user:', err);
-            res.status(500).send('An error occurred during login');
-            return;
-        }
-        if (results.length > 0) {
-            res.send({ status: 'success', message: 'Login successful' });
-        } else {
-            res.status(401).send({ status: 'fail', message: 'Incorrect email or password' });
-        }
-    });
-});
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// Endpoint to fetch achievements
 app.get('/achievements', (req, res) => {
     let sql = 'SELECT * FROM achievements';
     db.query(sql, (err, results) => {
