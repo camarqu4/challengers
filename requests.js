@@ -1,36 +1,53 @@
-// Mock data
-const activeUsers = [{ empId: '123', email: 'jane.doe@example.com' }];
-const accountRequests = [
-    { name: 'John Doe', empId: '456', email: 'john.doe@example.com' },
-    { name: 'Jane Doe', empId: '123', email: 'jane.doe@example.com' }
-];
-
-function displayRequests() {
+document.addEventListener('DOMContentLoaded', function() {
     const requestsList = document.getElementById('requestsList');
-    accountRequests.forEach((request, index) => {
-        const isFlagged = activeUsers.some(user => user.empId === request.empId || user.email === request.email);
-        const requestElement = document.createElement('div');
-        requestElement.innerHTML = `
-            <p>${request.name} ${isFlagged ? '<span class="flagged">(Flagged)</span>' : ''}</p>
-            <button onclick="approveRequest(${index})">Approve</button>
-            <button onclick="denyRequest(${index})">Deny</button>
-        `;
-        requestsList.appendChild(requestElement);
-    });
-}
 
-function approveRequest(index) {
-    alert(`Approved: ${accountRequests[index].name}`);
-    // Here, you'd normally call a backend service to update the request status.
-}
+    // Example account requests data
+    const accountRequests = [
+        { id: 1, name: 'John Doe', status: 'pending' },
+        { id: 2, name: 'Jane Doe', status: 'pending' }
+    ];
 
-function denyRequest(index) {
-    alert(`Denied: ${accountRequests[index].name}`);
-    // Similar to approve, you'd call a backend service here.
-}
+    function updateRequestsList() {
+        requestsList.innerHTML = ''; // Clear the list
+        accountRequests.forEach(request => {
+            const div = document.createElement('div');
+            div.innerHTML = `<p>${request.name}</p>
+                             <button onclick="approveRequest(${request.id})">Approve</button>
+                             <button onclick="denyRequest(${request.id})">Deny</button>`;
+            requestsList.appendChild(div);
 
-document.getElementById('backToMain').addEventListener('click', function() {
-    window.location.href = 'adminhomescreen.html';
+            // If approved, show access type selection
+            if (request.status === 'approved') {
+                const select = document.createElement('select');
+                select.innerHTML = `<option value="">Select Access Type</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="user">User</option>
+                                    <option value="manager">Manager</option>`;
+                select.onchange = function() { setAccessType(request.id, this.value); };
+                div.appendChild(select);
+            }
+        });
+    }
+
+    window.approveRequest = function(id) {
+        const request = accountRequests.find(request => request.id === id);
+        request.status = 'approved';
+        updateRequestsList();
+    };
+
+    window.denyRequest = function(id) {
+        const request = accountRequests.find(request => request.id === id);
+        request.status = 'denied';
+        // Optionally, remove the request from the list or mark it visibly as denied
+        updateRequestsList();
+        console.log(`Request ${id} denied.`);
+        // Here, you would typically inform the server about the denial.
+    };
+
+    window.setAccessType = function(id, accessType) {
+        console.log(`Access type for request ${id} set to ${accessType}.`);
+        // Here, you would typically update the server with the new access type.
+    };
+
+    updateRequestsList();
 });
-
-displayRequests();

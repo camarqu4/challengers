@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slider Survey</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>On a scale of 1 to 5, how efficient do you think each process is in your store? (1 = least efficient, 5 = most efficient)</h2>
+
+<form id="survey-form">
+    <div class="survey-item">
+        <label for="taking_cafe_orders">Taking Cafe Orders</label>
+        <input type="range" id="taking_cafe_orders" name="taking_cafe_orders" min="1" max="5" step="1">
+        <div class="slider-ticks">
+          <span class="tick">1</span>
+          <span class="tick">2</span>
+          <span class="tick">3</span>
+          <span class="tick">4</span>
+          <span class="tick">5</span>
+        </div>
+      </div>
+      
+      <div class="survey-item">
+        <label for="crafting_espresso">Crafting Espresso Bar Drinks</label>
+        <input type="range" id="crafting_espresso" name="crafting_espresso" min="1" max="5" step="1">
+        <div class="slider-ticks">
+          <span class="tick">1</span>
+          <span class="tick">2</span>
+          <span class="tick">3</span>
+          <span class="tick">4</span>
+          <span class="tick">5</span>
+        </div>
+      </div>
+      
+      <div class="survey-item">
+        <label for="crafting_shaken">Crafting Shaken Drinks</label>
+        <input type="range" id="crafting_shaken" name="crafting_shaken" min="1" max="5" step="1">
+        <div class="slider-ticks">
+          <span class="tick">1</span>
+          <span class="tick">2</span>
+          <span class="tick">3</span>
+          <span class="tick">4</span>
+          <span class="tick">5</span>
+      </div>
+      
+      <div class="survey-item">
+        <label for="crafting_blended">Crafting Blended Drinks</label>
+        <input type="range" id="crafting_blended" name="crafting_blended" min="1" max="5" step="1">
+        <div class="slider-ticks">
+          <span class="tick">1</span>
+          <span class="tick">2</span>
+          <span class="tick">3</span>
+          <span class="tick">4</span>
+          <span class="tick">5</span>
+        </div>
+      </div>
+      
+      <div class="survey-item">
+        <label for="warming_food">Warming Food</label>
+        <input type="range" id="warming_food" name="warming_food" min="1" max="5" step="1">
+        <div class="slider-ticks">
+          <span class="tick">1</span>
+          <span class="tick">2</span>
+          <span class="tick">3</span>
+          <span class="tick">4</span>
+          <span class="tick">5</span>
+        </div>
+      </div>
+      
+      <div class="survey-item">
+        <label for="cleaning_cafe">Cleaning the Cafe</label>
+        <input type="range" id="cleaning_cafe" name="cleaning_cafe" min="1" max="5" step="1">
+        <div class="slider-ticks">
+          <span class="tick">1</span>
+          <span class="tick">2</span>
+          <span class="tick">3</span>
+          <span class="tick">4</span>
+          <span class="tick">5</span>
+        </div>
+      </div>
+      
+      <div class="survey-item">
+        <label for="make_cold_brew">Making Cold Brew</label>
+        <input type="range" id="make_cold_brew" name="make_cold_brew" min="1" max="5" step="1">
+        <div class="slider-ticks">
+          <span class="tick">1</span>
+          <span class="tick">2</span>
+          <span class="tick">3</span>
+          <span class="tick">4</span>
+          <span class="tick">5</span>
+        </div>
+      </div>
+      
+      <div class="survey-item">
+        <label for="product_backlogs">Making Product Backlog</label>
+        <input type="range" id="product_backlogs" name="product_backlogs" min="1" max="5" step="1">
+        <div class="slider-ticks">
+          <span class="tick">1</span>
+          <span class="tick">2</span>
+          <span class="tick">3</span>
+          <span class="tick">4</span>
+          <span class="tick">5</span>
+        </div>
+      </div>
+      
+  
+  <button type="submit">Submit</button>
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>

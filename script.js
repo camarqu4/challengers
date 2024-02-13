@@ -79,3 +79,21 @@ function unlockAchievement(achievementId) {
     // Logic to remove the achievement from the locked list
     // and add it to the unlocked list
 }
+
+
+// slider survey
+document.getElementById('survey-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting in the traditional way
+    const formData = new FormData(event.target);
+    const formProps = Object.fromEntries(formData);
+    alert(JSON.stringify(formProps)); // Simplified without null
+  });
+  
+
+  // ranking survey
+  document.getElementById('survey-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting in the traditional way
+    const formData = new FormData(event.target);
+    const formProps = Object.fromEntries(formData);
+    alert(JSON.stringify(formProps)); // Alert the form data as a JSON string
+  });
