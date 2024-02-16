@@ -326,8 +326,16 @@ achievements-container {
     .col-lg-11 	{width: 		 91.66%; }
     .col-lg-12 	{width: 		100.00%; }
 }
-
-
+/* Profile Page */
+.profileAttribute {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 120%;
+    margin: 10px 0px;
+    padding: 20px 0px;
+    background-color: darkgrey;
+    float: left;
+}
 /* Accounts Request page */
 body {
     font-family: Arial, sans-serif;
