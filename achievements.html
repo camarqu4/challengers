@@ -9,18 +9,17 @@
 <body>
     <!-- Navbar -->
     <div class="navbar">
-        <div class="logo-container-nav">
+        <div class="logo-container-nav col-lg-02 col-md-02 col-sm-12">
             <img src="ch_logo.png" alt="Your Logo">
         </div>
-        <a href="user_home.html">Home</a>
-        <a href="surveys.html">Surveys</a> <!-- Update href as necessary -->
-        <a href="leaderboard.html">Leaderboard</a> <!-- Update href as necessary -->
-        <a href="achievements.html">Achievements</a>
-        <a href="profile.html">Profile</a> <!-- Update href as necessary -->
+        <a href="user_home.html" div class="col-lg-02 col-md-01 col-sm-12">Home</a>
+        <a href="surveys.html" div class="col-lg-02 col-md-03 col-sm-00">Surveys</a> <!-- Update href as necessary -->
+        <a href="leaderboard.html" div class="col-lg-02 col-md-03 col-sm-00">Leaderboard</a> <!-- Update href as necessary -->
+        <a href="achievements.html" div class="col-lg-02 col-md-00 col-sm-00">Achievements</a>
+        <a href="profile.html" div class="col-lg-02 col-md-03 col-sm-12">Profile</a> <!-- Update href as necessary -->
+        <a href="/" div class="col-lg-02 col-md-03 col-sm-12">Logout</a> <!-- This is your logout button -->
     </div>
     <div class="achievements-container">
-        <h1>Achievements</h1>
-
         <section class="unlocked-achievements">
             <h2>Unlocked Achievements</h2>
             <ul class="achievements-list" id="unlocked-achievements-list">
@@ -50,15 +49,15 @@
                         const item = document.createElement('li');
                         item.className = 'achievement';
                         item.innerHTML = `
-                        <img src="${achievement.logo_img}" alt="Achievement Icon" class="achievement-icon">
-                        <div class="achievement-info">
-                            <h3>${achievement.name}</h3>
-                            <p>${achievement.description}</p>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 0%;"> <!-- Update this based on actual progress --></div>
+                            <img src="${achievement.logo_img}" alt="Achievement Icon" class="achievement-icon">
+                            <div class="achievement-info">
+                                <h3>${achievement.name}</h3>
+                                <p>${achievement.description}</p>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%;"> <!-- Update this based on actual progress --></div>
+                                </div>
                             </div>
-                        </div>
-                    `;
+                        `;
                         list.appendChild(item);
                     });
                 })
