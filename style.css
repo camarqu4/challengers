@@ -2,7 +2,7 @@
 body, html {
     margin: 0;
     padding: 0;
-    width: 97.5%;
+    width: 100%;
     height: 100%;
     font-family: Arial, sans-serif; /* font of text */
     background-color: #0d1413;
@@ -165,16 +165,15 @@ h2 {
     display: flex;
     justify-content: space-between;
     background-color: #0d1413;
-    padding: 0px; /* Adjust based on your design */
+    padding: 5px 100px; /* Adjust based on your design */
     color: white;
     align-items: center;
-    width: 100%;
 }
 
 .navbar a {
     color: white;
     text-decoration: none;
-    margin: 0;
+    margin: 0 15px;
     font-weight: bold;
 }
 
@@ -186,9 +185,8 @@ h2 {
 .dashboard-container {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 20px;
     height: calc(100vh - 60px); /* Adjust based on the navbar height */
-    width: 100%;
 }
 
 .achievements-pane, .surveys-pane, .leaderboard-pane {
@@ -200,16 +198,6 @@ h2 {
     color: #F7f7f7;
     display: flex;
     flex-direction: column;
-}
-
-.user-home-button {
-    background-color: #1e2a28;
-    border-radius: 10px;
-    color: #F7f7f7;
-    float: left;
-    clear: right;
-    width: 100%;
-    height: 100%;
 }
 
 .achievements-pane h2, .surveys-pane h2, .leaderboard-pane h2 {
@@ -297,6 +285,16 @@ achievements-container {
 .unlocked-achievements h2, .locked-achievements h2 {
     color: #F7f7f7; /* Light color for headers */
 }
+
+.profile-container {
+    color: white; /* Assuming a dark theme */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px; /* Adjust as needed */
+    background-color: #1e2a28; /* Adjust to fit your theme */
+    border-radius: 10px;
+}
+
 /* Responsive Web Design Styling  */
 /* For phones (portrait) unless another @media rule below is fired */
 @media only screen and (max-width: 500px) {
@@ -325,7 +323,6 @@ achievements-container {
 @media only screen and (min-width: 1024px) {
     .col-md-00  {display: 		initial; }
     .col-sm-00  {display:       initial; }
-    .col-lg-00  {display: 		   none; }
     .col-lg-01  {width: 		  8.33%; }
     .col-lg-02  {width: 		 16.66%; }
     .col-lg-03  {width: 		 25.00%; }
