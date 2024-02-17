@@ -8,6 +8,11 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname)));
 
+app.use((req, res, next) => {
+    console.log(`Incoming request: ${req.method} ${req.path}`);
+    next();
+});
+
 const dbConfig = {
     host: '107.180.1.16',
     user: 'spring2024team1',
@@ -40,6 +45,37 @@ function handleDisconnect() {
 }
 
 handleDisconnect();
+
+// Login endpoint
+app.post('/login', (req, res) => {
+    console.log("Login route hit", req.body); // Log to confirm request data
+    const { email, password } = req.body;
+    let sql = 'SELECT * FROM users WHERE email = ?';
+
+    db.query(sql, [email], (err, results) => {
+        if (err) {
+            console.error('Failed to fetch user:', err);
+            res.status(500).send('An error occurred during the login process');
+            return;
+        }
+
+        if (results.length > 0) {
+            // Simplified for this example
+            const match = password === results[0].password;
+
+            if (match) {
+                // Passwords match
+                res.send('Login successful');
+            } else {
+                // Passwords do not match
+                res.status(401).send('Incorrect password');
+            }
+        } else {
+            // No user found with the given email
+            res.status(404).send('User not found');
+        }
+    });
+});
 
 // Updated /createAccount endpoint to handle new user fields
 app.post('/createAccount', (req, res) => {
@@ -80,16 +116,28 @@ app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
 
-app.get('/profileinfo', (req, res) => {
-    // activeuserid should store the current user's id
-    let sql = 'SELECT * FROM activeusers WHERE empid in ';
-    sql = sql + "(" + activeuserid + ")"
-    db.query(sql, (err, results) => {
+// Endpoint to fetch logged-in user's profile
+app.get('/profile', (req, res) => {
+    // Assume the user's email is sent in the query params or via a token
+    // For demonstration, using query params. In production, use a secure method like JWT tokens
+    const userEmail = req.query.email;
+
+    if (!userEmail) {
+        return res.status(400).send('User email is required');
+    }
+
+    let sql = 'SELECT username, firstName, lastName, email, department, positionTitle FROM users WHERE email = ?';
+
+    db.query(sql, [userEmail], (err, result) => {
         if (err) {
-            console.error('Failed to fetch profile info:', err);
-            res.status(500).send('An error occurred fetching information');
-            return;
+            console.error('Failed to fetch user profile:', err);
+            return res.status(500).send('An error occurred fetching user profile');
         }
-        res.json(results);
+
+        if (result.length > 0) {
+            res.json(result[0]);
+        } else {
+            res.status(404).send('User not found');
+        }
     });
 });
