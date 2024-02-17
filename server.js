@@ -79,3 +79,17 @@ app.get('/achievements', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
+app.get('/profileinfo', (req, res) => {
+    // activeuserid should store the current user's id
+    let sql = 'SELECT * FROM activeusers WHERE empid in ';
+    sql = sql + "(" + activeuserid + ")"
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Failed to fetch profile info:', err);
+            res.status(500).send('An error occurred fetching information');
+            return;
+        }
+        res.json(results);
+    });
+});

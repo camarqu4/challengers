@@ -42,7 +42,36 @@
         </div>
     </div>
 
-    <script src="profile.js"></script>
+    <script src="server.js"></script>
+    <script>
+        //This will populate the profile page with appropriate data
+        "use strict";
+
+        let pName = undefined
+        let pPoints = undefined
+        let pDepartment = undefined
+        let pAccess = undefined
+        let pEmployee = undefined
+        let pPosition = undefined
+
+        pName = document.getElementById("profileName")
+        pPoints = document.getElementById("profilePoints")
+        pDepartment = document.getElementById("profileDepartment")
+        pAccess = document.getElementById("profileAccess")
+        pEmployee = document.getElementById("profileEmployee")
+        pPosition = document.getElementById("profilePosition")
+
+        document.addEventListener('DOMContentLoaded', function () {
+            //A function to find the user data
+            fetch('/profileinfo')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    //The data needs to be parsed into the innerhtml of each of the document elements
+                })
+        } );
+
+    </script>
 
 </body>
 </html>
