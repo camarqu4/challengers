@@ -336,6 +336,15 @@ achievements-container {
     background-color: darkgrey;
     float: left;
 }
+
+.profileName {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 150%;
+    margin: 10px 0px;
+    padding: 20px 0px;
+    background-color: seagreen;
+}
 /* Accounts Request page */
 body {
     font-family: Arial, sans-serif;
