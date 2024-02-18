@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Accounts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button onclick="window.location.href='adminhomescreen.html'">Back to Main Page</button>
+    <div id="searchBox">
+        <input type="text" id="userSearch" onkeyup="searchUsers()" placeholder="Search employees...">
+    </div>
+    <ul id="userList"></ul>
+    <div id="editUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="editUserForm"></form>
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+                <label for="department">Department:</label>
+                <input type="text" id="department">
+                <label for="points">Points:</label>
+                <input type="number" id="points">
+                <label for="accessType">Access Type:</label>
+                <select id="accessType">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                    <option value="manager">Manager</option>
+                </select>
+                <button type="button" onclick="confirmEdit()">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

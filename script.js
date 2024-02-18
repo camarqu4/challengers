@@ -136,7 +136,7 @@ function fetchAndDisplayUserProfile() {
 
 // admin navigate to view user request page
 document.getElementById('toRequestsPage').addEventListener('click', function() {
-    window.location.href = 'requests.html';
+    window.location.href = 'adminrequest.html';
 });
 
 // admin navigate to point balance page
@@ -158,7 +158,9 @@ document.getElementById('survey-form').addEventListener('submit', function(event
     const formData = new FormData(event.target);
     const formProps = Object.fromEntries(formData);
     alert(JSON.stringify(formProps)); // Simplified without null
-  });
+  }); 
+
+
   
 
   // ranking survey
@@ -167,4 +169,133 @@ document.getElementById('survey-form').addEventListener('submit', function(event
     const formData = new FormData(event.target);
     const formProps = Object.fromEntries(formData);
     alert(JSON.stringify(formProps)); // Alert the form data as a JSON string
+  }); 
+
+
+
+
+// admin edit users function
+document.addEventListener('DOMContentLoaded', function() {
+    loadUsers(); // Simulate loading users from a source
+});
+
+function loadUsers() {
+    const users = [
+        { empID: '1', name: 'Alice', department: 'IT', points: 120, accessType: 'admin' },
+        { empID: '2', name: 'Bob', department: 'HR', points: 105, accessType: 'user' },
+        // Add more users as needed
+    ];
+
+    const userList = document.getElementById('userList');
+    users.sort((a, b) => a.name.localeCompare(b.name)).forEach(user => {
+        const li = document.createElement('li');
+        li.textContent = `${user.name} - ${user.department}`;
+        const editBtn = document.createElement('button');
+        editBtn.textContent = 'Edit';
+        editBtn.onclick = function() { openEditModal(user); };
+        li.appendChild(editBtn);
+        userList.appendChild(li);
+    });
+}
+
+function searchUsers() {
+    const input = document.getElementById('userSearch');
+    const filter = input.value.toUpperCase();
+    const ul = document.getElementById('userList');
+    const li = ul.getElementsByTagName('li');
+    for (let i = 0; i < li.length; i++) {
+        let txtValue = li[i].textContent || li[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+function openEditModal(user) {
+    const modal = document.getElementById('editUserModal');
+    modal.style.display = 'block';
+    document.getElementById('name').value = user.name;
+    document.getElementById('department').value = user.department;
+    document.getElementById('points').value = user.points;
+    document.getElementById('accessType').value = user.accessType;
+
+    const span = document.getElementsByClassName('close')[0];
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+}
+
+function confirmEdit() {
+    // Implement save logic here, possibly sending the data back to the server
+    alert('Changes saved successfully.');
+    document.getElementById('editUserModal').style.display = 'none';
+}
+
+
+// matching company values game
+document.addEventListener('DOMContentLoaded', function() {
+    let selectedValue = null;
+
+    document.querySelectorAll('#values .item').forEach(button => {
+        button.addEventListener('click', function() {
+            // Clear previous selections
+            if (selectedValue) {
+                selectedValue.classList.remove('selected');
+            }
+            this.classList.add('selected');
+            selectedValue = this;
+        });
+    });
+
+    document.querySelectorAll('#definitions .item').forEach(definition => {
+        definition.addEventListener('click', function() {
+            if (!selectedValue) {
+                return; // No value selected
+            }
+
+            if (selectedValue.dataset.match === this.dataset.match) {
+                this.style.backgroundColor = '#90ee90'; // Light green for correct match
+                selectedValue.disabled = true; // Disable the button to prevent re-selection
+                selectedValue = null; // Reset selection
+                updateResult('Correct match!');
+            } else {
+                this.style.backgroundColor = '#ffcccb'; // Light red for incorrect match
+                selectedValue.classList.remove('selected');
+                updateResult('Try again.');
+            }
+        });
+    });
+
+    function updateResult(message) {
+        document.getElementById('result').textContent = message;
+    }
+});
+
+
+// awards user 10 points after each survey is complete
+document.getElementById('survey-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting traditionally
+  
+    awardPoints(10); // Award 10 points to the user
+  
+    // Redirect to surveys.html after awarding points
+    window.location.href = 'surveys.html';
   });
+  
+  function awardPoints(points) {
+    // Example using localStorage for simplicity
+    let currentPoints = parseInt(localStorage.getItem('userPoints') || '0');
+    localStorage.setItem('userPoints', currentPoints + points);
+  
+    alert(`Awarded ${points} points! Total now is ${currentPoints + points}.`);
+  
+    // The redirection will happen after the alert is acknowledged.
+  }
+  

@@ -51,3 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateRequestsList();
 });
+
+
+// navigate back to admin home screen
+
+document.getElementById('backToMain').addEventListener('click', () => {
+    window.location.href = 'adminhomescreen.html';
+});
+
