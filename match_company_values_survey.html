@@ -8,21 +8,25 @@
 <body>
 <form id="survey-form">
     <div class="container">
-    <div class="column" id="values">
-        <h3>Values</h3>
-        <button class="item" data-match="1">Craft</button>
-        <button class="item" data-match="2">Courage</button>
-        <button class="item" data-match="3">Results</button>
-        <button class="item" data-match="4">Belonging</button>
-        <button class="item" data-match="5">Joy</button>
+    <div>
+        <ui class="column draggable-list" id="values">
+            <h3>Values</h3>
+            <li id="v1" draggable="true">Craft</li>
+            <li id="v2" draggable="true">Courage</li>
+            <li id="v3" draggable="true">Results</li>
+            <li id="v4" draggable="true">Belonging</li>
+            <li id="v5" draggable="true">Joy</li>
+        </ui>
     </div>
-    <div class="column" id="definitions">
-        <h3>Definitions</h3>
-        <div class="item" data-match="1">We delight in the rigor of the details—no matter what our job is, We learn and teach in the pursuit of growth, We deliver excellence with passion and creativity</div>
-        <div class="item" data-match="2">We embrace the difficult conversations, with respect, to make us better, We pursue audacious ideas beyond our comfort zone, We do the right thing, even when it's hard</div>
-        <div class="item" data-match="3">We consistently achieve our goals with focus, integrity, and drive, We continuously innovate to stay ahead, We exceed the expectations of the people we serve</div>
-        <div class="item" data-match="4">We actively listen and connect with warmth and transparency, We recognize every person for who they are, We treat each other with dignity and care</div>
-        <div class="item" data-match="5">We take pride in our work and have fun while doing it, We celebrate each other and our wins, We create great vibes to bring the best out of others</div>
+    <div>
+        <ui class="column draggable-list" id="definitions">
+            <h3>Definitions</h3>
+            <li id="d1" draggable="true">We delight in the rigor of the details—no matter what our job is, We learn and teach in the pursuit of growth, We deliver excellence with passion and creativity</li>
+            <li id="d2" draggable="true">We embrace the difficult conversations, with respect, to make us better, We pursue audacious ideas beyond our comfort zone, We do the right thing, even when it's hard</li>
+            <li id="d3" draggable="true">We consistently achieve our goals with focus, integrity, and drive, We continuously innovate to stay ahead, We exceed the expectations of the people we serve</li>
+            <li id="d4" draggable="true">We actively listen and connect with warmth and transparency, We recognize every person for who they are, We treat each other with dignity and care</li>
+            <li id="d5" draggable="true">We take pride in our work and have fun while doing it, We celebrate each other and our wins, We create great vibes to bring the best out of others</li>
+        </ui>
     </div>
 </div>
 <button type="submit">Submit</button>
@@ -30,5 +34,6 @@
 <div id="result"></div>
 
 <script src="script.js"></script>
+<script src="matchinggame.js"></script>
 </body>
 </html>
