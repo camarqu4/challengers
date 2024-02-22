@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.forEach((value, key) => {
                 jsonData[key] = value;
             });
-
+            //console.log("Checkpoint 1")
             fetch('/login', {
                 method: 'POST',
                 headers: {
@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(jsonData),
             })
             .then(response => {
+                //console.log("Checkpoint 3")
                 if (response.ok) {
                     return response.text();
                 } else {

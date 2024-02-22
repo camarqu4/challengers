@@ -61,14 +61,22 @@
         pAccess = document.getElementById("profileAccess")
         pEmployee = document.getElementById("profileEmployee")
         pPosition = document.getElementById("profilePosition")
-
+        
         document.addEventListener('DOMContentLoaded', function () {
             //A function to find the user data
-            fetch('/profileinfo')
+            fetch('/profile')
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
                     //The data needs to be parsed into the innerhtml of each of the document elements
+                    /* Logic to seperate these elements, psuedocode below
+                    pNameString = "Welcome " + data[name]
+                    pPointsString = "Current Point Total: " + data[points]
+                    pDepartmentString = "Department: " + data[department]
+                    pAccessString = "Access Level:  " + data[access]
+                    pEmployeeString = "Empolyee ID:  " + data[empid]
+                    pPositionString = "Position Title: " + data[position]
+                    */
                 })
         } );
 
