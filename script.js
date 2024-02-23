@@ -314,10 +314,22 @@ document.getElementById('survey-form').addEventListener('submit', function(event
   
   function awardPoints(points) {
     // Example using localStorage for simplicity
-    let currentPoints = parseInt(localStorage.getItem('userPoints') || '0');
-    localStorage.setItem('userPoints', currentPoints + points);
+    //let currentPoints = parseInt(localStorage.getItem('userPoints') || '0');
+    //localStorage.setItem('userPoints', currentPoints + points);
   
-    alert(`Awarded ${points} points! Total now is ${currentPoints + points}.`);
+    //alert(`Awarded ${points} points! Total now is ${currentPoints + points}.`);
+
+    //Adding points to the user profile
+    fetch(`/addpoints?email=${encodeURIComponent(userEmail)}`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Failed to fetch profile: ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(userData => {
+        alert(`Awarded ${points} points!`);
+    })
   
     // The redirection will happen after the alert is acknowledged.
 

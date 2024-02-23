@@ -149,8 +149,12 @@ app.post('/addpoints', (req, res) => {
     // hard coding point value since we are using the same for each game
     let newPoints = 10
 
-    const userEmail = localStorage.getItem('userEmail');
+    const userEmail = req.query.email;
 
+    if (!userEmail) {
+        return res.status(400).send('User email is required');
+    }
+    
     let sql = 'Update users SET points = points +' + newPoints + 'WHERE email = ?';
     db.query(sql, userEmail, (err, result) => {
         if (err) {
