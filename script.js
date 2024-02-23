@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+ocument.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('loginButton')) {
         document.getElementById('loginButton').addEventListener('click', function() {
             document.getElementById('loginForm').style.display = 'block';
@@ -24,46 +24,45 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // function definitions for loginFormSubmitHandler and createAccountFormSubmitHandler
     if (document.querySelector('#loginForm form')) {
-    document.querySelector('#loginForm form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const form = event.target;
-        const formData = new FormData(form);
-        const jsonData = {};
-        formData.forEach((value, key) => {
-            jsonData[key] = value;
-        });
+        document.querySelector('#loginForm form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const jsonData = {};
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
 
-        fetch('/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(jsonData),
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.text();
-            } else {
-                throw new Error('Failed to login');
-            }
-        })
-        .then(data => {
-            console.log(data);
-            const email = formData.get('email');
-            localStorage.setItem('userEmail', email);
-            window.location.href = 'user_home.html'; // Ensure this path is correct
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Login failed. Please check your credentials and try again.');
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(jsonData),
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Failed to login');
+                }
+            })
+            .then(data => {
+                console.log(data);
+                const email = formData.get('email');
+                localStorage.setItem('userEmail', email);
+                window.location.href = 'user_home.html'; // Ensure this path is correct
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Login failed. Please check your credentials and try again.');
+            });
         });
-    });
-}
+    }
 
     if (document.querySelector('#createAccountForm form')) {
-        document.querySelector('#createAccountForm form').addEventListener('submit', function (event) {
+        document.querySelector('#createAccountForm form').addEventListener('submit', function(event) {
             event.preventDefault();
             const form = event.target;
             const formData = new FormData(form);
@@ -79,28 +78,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify(jsonData),
             })
-                .then(response => {
-                    if (!response.ok) throw new Error('Failed to create account');
-                    return response.text(); // Assuming the response is text indicating success
-                })
-                .then(data => {
-                    console.log(data);
-                    // Update localStorage with the new user's email
-                    localStorage.setItem('userEmail', jsonData.email);
-                    alert('Account created successfully');
-                    window.location.href = 'user_home.html';
-                })
-                .catch(error => {
-                    console.error('Error creating account:', error);
-                    alert('Error creating account. Please try again.');
-                });
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to create account');
+                return response.text(); // Assuming the response is text indicating success
+            })
+            .then(data => {
+                console.log(data);
+                // Update localStorage with the new user's email
+                localStorage.setItem('userEmail', jsonData.email);
+                alert('Account created successfully');
+                window.location.href = 'user_home.html'; // Redirect to user homepage
+            })
+            .catch(error => {
+                console.error('Error creating account:', error);
+                alert('Error creating account. Please try again.');
+            });
         });
     }
 
     if (window.location.pathname.endsWith('/profile.html')) {
-        fetchAndDisplayUserProfile();
+        fetchAndDisplayUserProfile(); // Call the function to display user profile
     }
-});
 
 function fetchAndDisplayUserProfile() {
     console.log('Fetching user profile...');
