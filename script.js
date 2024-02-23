@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+ocument.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('loginButton')) {
         document.getElementById('loginButton').addEventListener('click', function() {
             document.getElementById('loginForm').style.display = 'block';
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // function definitions for loginFormSubmitHandler and createAccountFormSubmitHandler
     if (document.querySelector('#loginForm form')) {
         document.querySelector('#loginForm form').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -34,7 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.forEach((value, key) => {
                 jsonData[key] = value;
             });
+
             console.log("Before login fetch")
+
             fetch('/login', {
                 method: 'POST',
                 headers: {
@@ -43,7 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(jsonData),
             })
             .then(response => {
+
                 console.log("After the login query")
+
                 if (response.ok) {
                     return response.text();
                 } else {
@@ -64,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (document.querySelector('#createAccountForm form')) {
-        document.querySelector('#createAccountForm form').addEventListener('submit', function (event) {
+        document.querySelector('#createAccountForm form').addEventListener('submit', function(event) {
             event.preventDefault();
             const form = event.target;
             const formData = new FormData(form);
@@ -80,28 +83,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify(jsonData),
             })
-                .then(response => {
-                    if (!response.ok) throw new Error('Failed to create account');
-                    return response.text(); // Assuming the response is text indicating success
-                })
-                .then(data => {
-                    console.log(data);
-                    // Update localStorage with the new user's email
-                    localStorage.setItem('userEmail', jsonData.email);
-                    alert('Account created successfully');
-                    window.location.href = 'user_home.html';
-                })
-                .catch(error => {
-                    console.error('Error creating account:', error);
-                    alert('Error creating account. Please try again.');
-                });
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to create account');
+                return response.text(); // Assuming the response is text indicating success
+            })
+            .then(data => {
+                console.log(data);
+                // Update localStorage with the new user's email
+                localStorage.setItem('userEmail', jsonData.email);
+                alert('Account created successfully');
+                window.location.href = 'user_home.html'; // Redirect to user homepage
+            })
+            .catch(error => {
+                console.error('Error creating account:', error);
+                alert('Error creating account. Please try again.');
+            });
         });
     }
 
     if (window.location.pathname.endsWith('/profile.html')) {
-        fetchAndDisplayUserProfile();
+        fetchAndDisplayUserProfile(); // Call the function to display user profile
     }
-});
 
 function fetchAndDisplayUserProfile() {
     console.log('Fetching user profile...');
