@@ -121,14 +121,36 @@ function fetchAndDisplayUserProfile() {
     })
     .then(userData => {
         console.log('User data:', userData);
-        const userProfileDiv = document.getElementById('userProfile');
+        /* const userProfileDiv = document.getElementById('userProfile');
         userProfileDiv.innerHTML = `
             <p>Username: ${userData.username}</p>
             <p>Name: ${userData.firstName} ${userData.lastName}</p>
             <p>Email: ${userData.email}</p>
             <p>Department: ${userData.department}</p>
             <p>Position: ${userData.positionTitle}</p>
-        `;
+        `; */
+        //Finding each of the profile divs, and updating their innerText
+        let pName = document.getElementById("profileName")
+        let pPoints = document.getElementById("profilePoints")
+        let pDepartment = document.getElementById("profileDepartment")
+        let pAccess = document.getElementById("profileAccess")
+        let pEmployee = document.getElementById("profileEmployee")
+        let pPosition = document.getElementById("profilePosition")
+
+        pNameString = "Welcome " + userData.firstName + " " + userData.lastName
+        pPointsString = "Current Point Total: " + userData.points
+        pDepartmentString = "Department: " + userData.department
+        //Access hard coded as employee, not sure where this information is stored currently
+        pAccessString = "Access Level:  " + "Employee" //userData.access
+        pEmployeeString = "Empolyee ID:  " + userData.id
+        pPositionString = "Position Title: " + userData.positionTitle
+
+        pName.innerText  = pNameString
+        pPoints.innerText  = pPointsString
+        pDepartment.innerText = pDepartmentString
+        pAccess.innerText  = pAccessString
+        pEmployee.innerText  = pEmployeeString
+        pPosition.innerText = pPositionString
     })
     .catch(error => {
         console.error('Error fetching user profile:', error);

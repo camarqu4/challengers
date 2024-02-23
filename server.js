@@ -122,18 +122,16 @@ app.listen(port, () => {
 app.get('/profile', (req, res) => {
     // Assume the user's email is sent in the query params or via a token
     // For demonstration, using query params. In production, use a secure method like JWT tokens
-    const userEmail = localStorage.getItem('userEmail');
+    const userEmail = req.query.email;
     // Hard coded below if needed for testing
     //    const userEmail = "camarqu4@asu.edu" 
 
     if (!userEmail) {
         return res.status(400).send('User email is required');
     }
-
-    let sql = 'SELECT username, firstName, lastName, email, department, positionTitle FROM users WHERE email = ' + userEmail;
-    // console.log(sql)
-
-    db.query(sql, (err, result) => {
+    //Finding id, firstName, lastName, department, positionTitle, points
+    let sql = 'SELECT * FROM users WHERE email = ?';
+    db.query(sql, [userEmail], (err, result) => {
         if (err) {
             console.error('Failed to fetch user profile:', err);
             return res.status(500).send('An error occurred fetching user profile');
