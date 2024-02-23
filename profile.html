@@ -42,12 +42,10 @@
             Position:
         </div>
     </div>
-
-    <script src="server.js"></script>
-    <script>
+    <script src="script.js">
+        // The code below is an older test
         //This will populate the profile page with appropriate data
-        "use strict";
-
+        /*
         let pName = undefined
         let pPoints = undefined
         let pDepartment = undefined
@@ -61,7 +59,6 @@
         pAccess = document.getElementById("profileAccess")
         pEmployee = document.getElementById("profileEmployee")
         pPosition = document.getElementById("profilePosition")
-        
         document.addEventListener('DOMContentLoaded', function () {
             //A function to find the user data
             fetch('/profile')
@@ -69,16 +66,23 @@
                 .then(data => {
                     console.log(data)
                     //The data needs to be parsed into the innerhtml of each of the document elements
-                    /* Logic to seperate these elements, psuedocode below
-                    pNameString = "Welcome " + data[name]
-                    pPointsString = "Current Point Total: " + data[points]
-                    pDepartmentString = "Department: " + data[department]
-                    pAccessString = "Access Level:  " + data[access]
-                    pEmployeeString = "Empolyee ID:  " + data[empid]
-                    pPositionString = "Position Title: " + data[position]
-                    */
+                    pNameString = "Welcome " + data.firstName + " " + data.lastName
+                    pPointsString = "Current Point Total: " + data.points
+                    pDepartmentString = "Department: " + data.department
+                    pAccessString = "Access Level:  " + data.access
+                    pEmployeeString = "Empolyee ID:  " + data.id
+                    pPositionString = "Position Title: " + data.positionTitle
+
+                    pName.innerhtml  = pNameString
+                    pPoints.innerhtml  = pPointsString
+                    pDepartment.innerhtml  = pDepartmentString
+                    pAccess.innerhtml  = pAccessString
+                    pEmployee.innerhtml  = pEmployeeString
+                    pPosition.innerhtml  = pPositionString
                 })
-        } );
+                
+        
+        } ); */
 
     </script>
 

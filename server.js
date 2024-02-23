@@ -53,7 +53,7 @@ app.post('/login', (req, res) => {
     let sql = 'SELECT * FROM users WHERE email = ?';
 
     db.query(sql, [email], (err, results) => {
-        //console.log("Checkpoint 2")
+        console.log("Within the login query")
         if (err) {
             console.error('Failed to fetch user:', err);
             res.status(500).send('An error occurred during the login process');
@@ -103,6 +103,7 @@ app.get('/', (req, res) => {
 // Endpoint to fetch achievements
 app.get('/achievements', (req, res) => {
     let sql = 'SELECT * FROM achievements';
+    //console.log(sql)
     db.query(sql, (err, results) => {
         if (err) {
             console.error('Failed to fetch achievements:', err);
@@ -122,13 +123,14 @@ app.get('/profile', (req, res) => {
     // Assume the user's email is sent in the query params or via a token
     // For demonstration, using query params. In production, use a secure method like JWT tokens
     const userEmail = req.query.email;
+    // Hard coded below if needed for testing
+    //    const userEmail = "camarqu4@asu.edu" 
 
     if (!userEmail) {
         return res.status(400).send('User email is required');
     }
-
-    let sql = 'SELECT username, firstName, lastName, email, department, positionTitle FROM users WHERE email = ?';
-
+    //Finding id, firstName, lastName, department, positionTitle, points
+    let sql = 'SELECT * FROM users WHERE email = ?';
     db.query(sql, [userEmail], (err, result) => {
         if (err) {
             console.error('Failed to fetch user profile:', err);
@@ -140,5 +142,27 @@ app.get('/profile', (req, res) => {
         } else {
             res.status(404).send('User not found');
         }
+    });
+});
+// Endpoint to add points to users after games
+app.post('/addpoints', (req, res) => {
+    // hard coding point value since we are using the same for each game
+    let newPoints = 10
+
+    const userEmail = req.query.email;
+
+    if (!userEmail) {
+        return res.status(400).send('User email is required');
+    }
+    
+    let sql = 'Update users SET points = points +' + newPoints + 'WHERE email = ?';
+    db.query(sql, userEmail, (err, result) => {
+        if (err) {
+            console.error('Failed to update user record:', err);
+            res.status(500).send('An error occurred updating the user account');
+            return;
+        }
+        console.log('User points inserted', result);
+        res.send('Points updated successfully');
     });
 });

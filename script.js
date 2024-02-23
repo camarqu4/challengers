@@ -34,6 +34,8 @@ ocument.addEventListener('DOMContentLoaded', function() {
                 jsonData[key] = value;
             });
 
+            console.log("Before login fetch")
+
             fetch('/login', {
                 method: 'POST',
                 headers: {
@@ -42,6 +44,9 @@ ocument.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(jsonData),
             })
             .then(response => {
+
+                console.log("After the login query")
+
                 if (response.ok) {
                     return response.text();
                 } else {
@@ -118,14 +123,36 @@ function fetchAndDisplayUserProfile() {
     })
     .then(userData => {
         console.log('User data:', userData);
-        const userProfileDiv = document.getElementById('userProfile');
+        /* const userProfileDiv = document.getElementById('userProfile');
         userProfileDiv.innerHTML = `
             <p>Username: ${userData.username}</p>
             <p>Name: ${userData.firstName} ${userData.lastName}</p>
             <p>Email: ${userData.email}</p>
             <p>Department: ${userData.department}</p>
             <p>Position: ${userData.positionTitle}</p>
-        `;
+        `; */
+        //Finding each of the profile divs, and updating their innerText
+        let pName = document.getElementById("profileName")
+        let pPoints = document.getElementById("profilePoints")
+        let pDepartment = document.getElementById("profileDepartment")
+        let pAccess = document.getElementById("profileAccess")
+        let pEmployee = document.getElementById("profileEmployee")
+        let pPosition = document.getElementById("profilePosition")
+
+        pNameString = "Welcome " + userData.firstName + " " + userData.lastName
+        pPointsString = "Current Point Total: " + userData.points
+        pDepartmentString = "Department: " + userData.department
+        //Access hard coded as employee, not sure where this information is stored currently
+        pAccessString = "Access Level:  " + "Employee" //userData.access
+        pEmployeeString = "Empolyee ID:  " + userData.id
+        pPositionString = "Position Title: " + userData.positionTitle
+
+        pName.innerText  = pNameString
+        pPoints.innerText  = pPointsString
+        pDepartment.innerText = pDepartmentString
+        pAccess.innerText  = pAccessString
+        pEmployee.innerText  = pEmployeeString
+        pPosition.innerText = pPositionString
     })
     .catch(error => {
         console.error('Error fetching user profile:', error);
@@ -289,11 +316,25 @@ document.getElementById('survey-form').addEventListener('submit', function(event
   
   function awardPoints(points) {
     // Example using localStorage for simplicity
-    let currentPoints = parseInt(localStorage.getItem('userPoints') || '0');
-    localStorage.setItem('userPoints', currentPoints + points);
+    //let currentPoints = parseInt(localStorage.getItem('userPoints') || '0');
+    //localStorage.setItem('userPoints', currentPoints + points);
   
-    alert(`Awarded ${points} points! Total now is ${currentPoints + points}.`);
+    //alert(`Awarded ${points} points! Total now is ${currentPoints + points}.`);
+
+    //Adding points to the user profile
+    fetch(`/addpoints?email=${encodeURIComponent(userEmail)}`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Failed to fetch profile: ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(userData => {
+        alert(`Awarded ${points} points!`);
+    })
   
     // The redirection will happen after the alert is acknowledged.
+
+    // Needs to connect to the fetch(/addpoints) server endpoint
   }
   
