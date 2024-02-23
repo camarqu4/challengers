@@ -26,42 +26,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // function definitions for loginFormSubmitHandler and createAccountFormSubmitHandler
     if (document.querySelector('#loginForm form')) {
-        document.querySelector('#loginForm form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const form = event.target;
-            const formData = new FormData(form);
-            const jsonData = {};
-            formData.forEach((value, key) => {
-                jsonData[key] = value;
-            });
-            //console.log("Checkpoint 1")
-            fetch('/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(jsonData),
-            })
-            .then(response => {
-                //console.log("Checkpoint 3")
-                if (response.ok) {
-                    return response.text();
-                } else {
-                    throw new Error('Failed to login');
-                }
-            })
-            .then(data => {
-                console.log(data);
-                const email = formData.get('email');
-                localStorage.setItem('userEmail', email);
-                window.location.href = 'user_home.html'; // Ensure this path is correct
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Login failed. Please check your credentials and try again.');
-            });
+    document.querySelector('#loginForm form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        const jsonData = {};
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
         });
-    }
+
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(jsonData),
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw new Error('Failed to login');
+            }
+        })
+        .then(data => {
+            console.log(data);
+            const email = formData.get('email');
+            localStorage.setItem('userEmail', email);
+            window.location.href = 'user_home.html'; // Ensure this path is correct
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Login failed. Please check your credentials and try again.');
+        });
+    });
+}
 
     if (document.querySelector('#createAccountForm form')) {
         document.querySelector('#createAccountForm form').addEventListener('submit', function (event) {
