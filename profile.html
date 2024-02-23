@@ -67,14 +67,19 @@
                 .then(data => {
                     console.log(data)
                     //The data needs to be parsed into the innerhtml of each of the document elements
-                    /* Logic to seperate these elements, psuedocode below
-                    pNameString = "Welcome " + data[name]
-                    pPointsString = "Current Point Total: " + data[points]
-                    pDepartmentString = "Department: " + data[department]
-                    pAccessString = "Access Level:  " + data[access]
-                    pEmployeeString = "Empolyee ID:  " + data[empid]
-                    pPositionString = "Position Title: " + data[position]
-                    */
+                    pNameString = "Welcome " + data.firstName + " " + data.lastName
+                    pPointsString = "Current Point Total: " + data.points
+                    pDepartmentString = "Department: " + data.department
+                    pAccessString = "Access Level:  " + data.access
+                    pEmployeeString = "Empolyee ID:  " + data.id
+                    pPositionString = "Position Title: " + data.positionTitle
+
+                    pName.innerhtml  = pNameString
+                    pPoints.innerhtml  = pPointsString
+                    pDepartment.innerhtml  = pDepartmentString
+                    pAccess.innerhtml  = pAccessString
+                    pEmployee.innerhtml  = pEmployeeString
+                    pPosition.innerhtml  = pPositionString
                 })
         } );
 

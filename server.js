@@ -103,6 +103,7 @@ app.get('/', (req, res) => {
 // Endpoint to fetch achievements
 app.get('/achievements', (req, res) => {
     let sql = 'SELECT * FROM achievements';
+    //console.log(sql)
     db.query(sql, (err, results) => {
         if (err) {
             console.error('Failed to fetch achievements:', err);
@@ -121,7 +122,7 @@ app.listen(port, () => {
 app.get('/profile', (req, res) => {
     // Assume the user's email is sent in the query params or via a token
     // For demonstration, using query params. In production, use a secure method like JWT tokens
-    const userEmail = req.query.email;
+    const userEmail = localStorage.getItem('userEmail');
     // Hard coded below if needed for testing
     //    const userEmail = "camarqu4@asu.edu" 
 
@@ -129,9 +130,10 @@ app.get('/profile', (req, res) => {
         return res.status(400).send('User email is required');
     }
 
-    let sql = 'SELECT username, firstName, lastName, email, department, positionTitle FROM users WHERE email = ?';
+    let sql = 'SELECT username, firstName, lastName, email, department, positionTitle FROM users WHERE email = ' + userEmail;
+    // console.log(sql)
 
-    db.query(sql, [userEmail], (err, result) => {
+    db.query(sql, (err, result) => {
         if (err) {
             console.error('Failed to fetch user profile:', err);
             return res.status(500).send('An error occurred fetching user profile');
@@ -149,10 +151,10 @@ app.post('/addpoints', (req, res) => {
     // hard coding point value since we are using the same for each game
     let newPoints = 10
 
-    const userEmail = req.query.email;
+    const userEmail = localStorage.getItem('userEmail');
 
     let sql = 'Update users SET points = points +' + newPoints + 'WHERE email = ?';
-    db.query(sql, [userEmail], (err, result) => {
+    db.query(sql, userEmail, (err, result) => {
         if (err) {
             console.error('Failed to update user record:', err);
             res.status(500).send('An error occurred updating the user account');
