@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.forEach((value, key) => {
                 jsonData[key] = value;
             });
-            //console.log("Checkpoint 1")
+            console.log("Before login fetch")
             fetch('/login', {
                 method: 'POST',
                 headers: {
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(jsonData),
             })
             .then(response => {
-                //console.log("Checkpoint 3")
+                console.log("After the login query")
                 if (response.ok) {
                     return response.text();
                 } else {
@@ -298,5 +298,7 @@ document.getElementById('survey-form').addEventListener('submit', function(event
     alert(`Awarded ${points} points! Total now is ${currentPoints + points}.`);
   
     // The redirection will happen after the alert is acknowledged.
+
+    // Needs to connect to the fetch(/addpoints) server endpoint
   }
   

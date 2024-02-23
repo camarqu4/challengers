@@ -53,7 +53,7 @@ app.post('/login', (req, res) => {
     let sql = 'SELECT * FROM users WHERE email = ?';
 
     db.query(sql, [email], (err, results) => {
-        //console.log("Checkpoint 2")
+        console.log("Within the login query")
         if (err) {
             console.error('Failed to fetch user:', err);
             res.status(500).send('An error occurred during the login process');
