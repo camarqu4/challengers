@@ -134,6 +134,8 @@ function fetchAndDisplayUserProfile() {
     });
 }
 
+
+
 // admin navigate to view user request page
 document.getElementById('toRequestsPage').addEventListener('click', function() {
     window.location.href = 'adminrequest.html';

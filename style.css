@@ -634,20 +634,3 @@ body {
 #result {
     margin-top: 20px;
 }
-
-.draggable-list {
-    padding: 5px;
-  }
-  
-li {
-    list-style: none;
-    padding: 10px;
-    margin: 5px;
-    background-color: #cfd8dc;
-    border: 1px solid #b0bec5;
-    color: #263238;
-    cursor: grab;
-  }
-  .over {
-    background-color: #90a4ae;
-  }
