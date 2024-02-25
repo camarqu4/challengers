@@ -1,4 +1,4 @@
-ocument.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('loginButton')) {
         document.getElementById('loginButton').addEventListener('click', function() {
             document.getElementById('loginForm').style.display = 'block';
@@ -104,7 +104,7 @@ ocument.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.endsWith('/profile.html')) {
         fetchAndDisplayUserProfile(); // Call the function to display user profile
     }
-
+})
 function fetchAndDisplayUserProfile() {
     console.log('Fetching user profile...');
     const userEmail = localStorage.getItem('userEmail');
